@@ -10,11 +10,13 @@
 <body>
     <ul id="myPosts">
         <% for(var i=0; i<posts.length; i++) {%>
-        <li class="post">
-          <a class="link" href="/post?id=<%=posts[i]._id%>"><img class="picture" src="<%=posts[i].image %>"></a>
-          <span class="caption"><%= posts[i].caption %></span>
-          <button><i class="fa fa-trash" style="color: black; font-size: 120px; border: 20px solid red;"></i></button>
-        </li>
+          <% if( posts[i].user.toString() == user._id.toString()) { %>
+            <li class="post">
+              <a class="link" href="/post?id=<%=posts[i]._id%>"><img class="picture" src="<%=posts[i].image %>"></a>
+              <span class="caption"><%= posts[i].caption %></span>
+              <button><i class="fa fa-trash" style="color: black; font-size: 120px; border: 20px solid red;"></i></button>
+            </li>
+        <% } %>
       <% } %>
       </ul>
       <script type="text/javascript" src="main.js"></script>
