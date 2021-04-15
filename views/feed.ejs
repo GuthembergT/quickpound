@@ -52,12 +52,6 @@ Kiany, Kevin C, Davida, Alief, Guthemberg, Kiany, Eden -->
             <li class="post">
               <a href="/post?id=<%=posts[i]._id%>"><img class="picture" src="<%=posts[i].image %>"></a>
               <span class="caption"><%= posts[i].caption %></span>
-              <% for (j = comment.length-1; j > 0; j--) { %>
-                <% if (comment[j].post == posts[i]._id) { %>
-                  <p class="recentComment"><%= comment[j].comment %></p>
-                  <% break; %>
-                <% } %>
-              <% } %>
               <button class="commentBox">Comment</button>
               <form class="comment hide">
                 <input class="text "type="text">
