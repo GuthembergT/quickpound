@@ -12,7 +12,9 @@
         <a href="/post?id=<%=post._id%>"><img class="picture" src="<%=post.image %>"></a>
         <span class="caption"><%= post.caption %></span>
         <% for(i = comments.length-1; i > 0; i--) { %>
-            <p class="comment"><%= comments[i].comment%> | <span><%= comments[i].timestamp %></span></p>
+            <% if (comments[i].post == post._id) { %>
+                <p class="comment"><%= comments[i].comment%> | <span><%= comments[i].timestamp %></span></p>
+            <% } %>
         <% } %>
     </div>
 </body>
