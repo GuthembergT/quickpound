@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <button><a href="/feed">Feed</a></button>
+    <a href="/feed" class="btn btn-default btn-sm">Feed</a>
+    <a href="/profile" class="btn btn-default btn-sm">Profile</a>
     <div class="ticket">
         <a href="/post?id=<%=post._id%>"><img class="picture" src="<%=post.image %>"></a>
         <span class="caption"><%= post.caption %></span>
