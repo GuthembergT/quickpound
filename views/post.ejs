@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button><a href="/feed">Feed</a></button>
+    <div class="ticket">
+        <a href="/post?id=<%=post._id%>"><img class="picture" src="<%=post.image %>"></a>
+        <span class="caption"><%= post.caption %></span>
+        <% for(i = comments.length-1; i > 0; i--) { %>
+            <p class="comment"><%= comments[i].comment%> | <span><%= comments[i].timestamp %></span></p>
+        <% } %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!-- Worked with my House Hayden 
+Kiany, Kevin C, Davida, Alief, Guthemberg, Kiany, Eden -->
+
+<!Doctype html>
+<html>
+<head>
+    <title>Boba-Barista</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+<div class="containerBoba">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-heart-o"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user.local.username %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+          <form id="createPost">
+            <input type="file" class="picture" name="file-to-upload">
+            <input type="text" class="caption" name="caption">
+            <input type="submit" value="POST!">
+          </form>
+
+          <ul id="feed">
+            <% for(var i=0; i<posts.length; i++) {%>
+            <li class="post">
+              <a href="/post?id=<%=posts[i]._id%>"><img class="picture" src="<%=posts[i].image %>"></a>
+              <span class="caption"><%= posts[i].caption %></span>
+              <% for (j = comment.length-1; j > 0; j--) { %>
+                <% if (comment[j].post == posts[i]._id) { %>
+                  <p class="recentComment"><%= comment[j].comment %></p>
+                  <% break; %>
+                <% } %>
+              <% } %>
+              <button class="commentBox">Comment</button>
+              <form class="comment hide">
+                <input class="text "type="text">
+                <input class="submitComment" type="submit" value=">">
+                <button class="cancel">Cancel</button>
+              </form>
+            </li>
+          <% } %>
+          </ul>
+        </ul>
+
+</div>
+
+<script src="feed.js"></script>
+
+</body>
+
+</html>
